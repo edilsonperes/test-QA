@@ -37,5 +37,5 @@ Common automation tools are:
 - Selenium WebDriver with Python, Java
 - Cypress, WebDriver.io (what do you think to integrate docker, and Cucumber?)
 
-#IDEs: I strongly suggest you to use Visual Studio Code
-#Operational System: I strongly suggest you to use Linux or MacOS
+IDEs: I strongly suggest you to use Visual Studio Code
+Operational System: I strongly suggest you to use Linux or MacOS
