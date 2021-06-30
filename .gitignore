@@ -22,7 +22,12 @@
 ehthumbs.db
 Thumbs.db
 
-# directories #
+# Directories #
 ###############
+*/__pycache__
 venv/
 .vscode/
+
+# Jupyter notebooks #
+#####################
+*.ipynb
