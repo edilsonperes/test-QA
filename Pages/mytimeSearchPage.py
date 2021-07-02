@@ -1,12 +1,9 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
 class mytimeSearch:
-    '''Searches for a service in a city.'''
+    '''Performs actions on search page.'''
     # Class variables
-    cookies_locator_type = By.ID
-    cookies_locator = "accept-cookies-and-close-button"
     service_locator_type = By.XPATH
     service_locator = "(//input[@id='search-query'])[2]"
     location_locator_type = By.XPATH
@@ -17,11 +14,6 @@ class mytimeSearch:
     def __init__(self, driver) -> None:
         '''Constructor for class.'''
         self.driver = driver
-
-    def acceptCookies(self) -> None:
-        '''Clicks the button to accept cookies.'''
-        self.driver.find_element(
-            self.cookies_locator_type, self.cookies_locator).click()
 
     def setService(self, service: str) -> None:
         '''Fill out the service field.'''
@@ -39,3 +31,9 @@ class mytimeSearch:
         '''Clicks the search button.'''
         self.driver.find_element(
             self.search_button_locator_type, self.search_button_locator).click()
+
+    def searchService(self, service: str, location: str) -> None:
+        '''Searches for the service in the location.'''
+        self.setService(service)
+        self.setLocation(location)
+        self.clickSearchButton()

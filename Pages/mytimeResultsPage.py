@@ -1,9 +1,8 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
 class mytimeResults:
-    '''Executes actions on search results page.'''
+    '''Performs actions on search results page.'''
     # Class variables
     results_locator_type = By.XPATH
     results_locator = "//ul[@id='results']/li"
