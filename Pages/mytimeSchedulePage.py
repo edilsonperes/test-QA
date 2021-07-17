@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,6 +10,10 @@ class mytimeSchedule:
     # Class variables
     available_times_locator_type = By.XPATH
     available_times_locator = "//h5"
+    next_day_locator_type = By.XPATH
+    next_day_locator = "(//div[@class[contains(.,'today')]]/../../following-sibling::button[1]//div)[2]"
+    next_week_locator_type = By.XPATH
+    next_week_locator = "//div[@class[contains(.,'NextWeekArrow')]]"
     service_name_locator_type = By.XPATH
     service_name_locator = "//li//div[@class='col-left']/span"
     service_price_locator_type = By.XPATH
@@ -22,6 +27,17 @@ class mytimeSchedule:
 
     def countAvailableTimes(self) -> int:
         '''Counts available times for scheduling.'''
+        try:
+            self.driver.find_element(
+                self.available_times_locator_type, self.available_times_locator)
+        except NoSuchElementException:
+            try:
+                self.driver.find_element(
+                    self.next_day_locator_type, self.next_day_locator).click()
+            except NoSuchElementException:
+                self.driver.find_element(
+                    self.next_week_locator_type, self.next_week_locator).click()
+
         return len(self.driver.find_elements(self.available_times_locator_type, self.available_times_locator))
 
     def getServiceName(self) -> str:

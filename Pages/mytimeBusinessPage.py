@@ -38,10 +38,9 @@ class mytimeBusiness:
         (1) Position for staff member starts from 1.\n
         (2) Psition 0 = "All Staff Members".'''
         staff_name = self.driver.find_element(
-            self.staff_filter_locator_type, self.staff_filter_locator.format(staff+1)).text
-        self.driver.find_element(
-            self.staff_filter_locator_type, self.staff_filter_locator.format(staff+1)).click()
-        return staff_name
+            self.staff_filter_locator_type, self.staff_filter_locator.format(staff+1))
+        staff_name.click()
+        return staff_name.text
 
     def clickBookButton(self, service: str) -> tuple:
         '''Clicks the "Book" button for the selected service.\n

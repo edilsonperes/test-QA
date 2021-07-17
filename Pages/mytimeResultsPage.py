@@ -15,9 +15,7 @@ class mytimeResults:
 
     def countResults(self) -> int:
         '''Counts how many results are shown to the user.'''
-        results = self.driver.find_elements(
-            self.results_locator_type, self.results_locator)
-        return len(results)
+        return len(self.driver.find_elements(self.results_locator_type, self.results_locator))
 
     def selectBusiness(self, business_name: str) -> None:
         '''Selects the business that matches the business name.\n
